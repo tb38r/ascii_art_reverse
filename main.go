@@ -37,7 +37,6 @@ func main() {
 	asciifile.Close()
 
 	// create a map and append all ascii chars, line number corresponding to ascii number
-
 	asciiMap := make(map[int][]string)
 
 	asciiNum := 31
@@ -50,46 +49,53 @@ func main() {
 		}
 	}
 
-	// for _, line := range lines {
-	// 	for _, ch := range line {
-	// 		fmt.Println(rune(ch))
-	// 	}
-	// }
-
-	// figure a way to print the chars vertically
-
-	for j := 0; j < 81; j++ {
-		for i := 0; i < len(lines); i++ {
-			if lines[i][j] != 32 {
-				fmt.Print(rune(lines[i][j]))
-				// fmt.Print("\n")
-			}
+	// putting the runes of each char from standard into a slice
+	runes := []rune{}
+	for _, line := range asciiMap[33] {
+		for _, ch := range line {
+			runes = append(runes, ch)
 		}
-		fmt.Println()
 	}
 
-	// for _, line := range asciiMap[72] {
-	// 	for _, ch := range line {
-	// 		if ch != 32 {
-	// 			fmt.Print(rune(ch))
-	// 			fmt.Print("\n")
-	// 		}
-	// 	}
-	// }
+	runes2 := []rune{}
+
+	// putting given ascii into a slice of runes
+	for _, line := range lines {
+		for _, ch := range line {
+			runes2 = append(runes2, ch)
+		}
+	}
+
+	// loop over given ascii slice
+	// loop over map, char by char, compare the runes of each char to the same part in given
+	for i, value := range asciiMap {
+		for j := 0; j < 8; j++ {
+			if Compare(value, []string{"hello"}) {
+				fmt.Println(string(rune(i)))
+				fmt.Println(value, lines[:len(asciiMap[i])])
+			}
+		}
+	}
 
 	// for i := 0; i < 8; i++ {
-	// 	for _, ch := range asciiMap[72][i] {
-	// 		if ch != 32 {
-	// 			fmt.Println(rune(ch))
-	// 		}
-	// 	}
+	// 	fmt.Print(lines[i][:len(asciiMap[35][0])])
 	// }
 
-	// for i := 0; i < 8; i++ {
-	// 	for j, line := range asciiLines {
-	// 		if line != "" && asciiLines[j][i] != 32 {
-	// 			fmt.Print(asciiLines[j][i])
-	// 		}
-	// 	}
-	// }
+	// fmt.Println(lines[0][:len(asciiMap[35][0])])
+	// fmt.Println(len(asciiMap[35][0]))
+	// fmt.Println("hello")
+	// fmt.Println(strings.Join(asciiMap[35], ""))
+}
+
+// Compare, compares slices of string to check if they are equal.
+func Compare(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }
