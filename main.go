@@ -49,41 +49,38 @@ func main() {
 		}
 	}
 
-	// putting the runes of each char from standard into a slice
-	runes := []rune{}
-	for _, line := range asciiMap[33] {
-		for _, ch := range line {
-			runes = append(runes, ch)
-		}
+	// for i, value := range asciiMap {
+	// 	fmt.Println(i, value)
+	// }
+
+	// fmt.Println(asciiMap[32])
+	test := []string{}
+	for i := 0; i < 8; i++ {
+		test = append(test, (lines[i][:len(asciiMap[35][0])]))
 	}
-
-	runes2 := []rune{}
-
-	// putting given ascii into a slice of runes
-	for _, line := range lines {
-		for _, ch := range line {
-			runes2 = append(runes2, ch)
-		}
-	}
-
+	fmt.Println(test)
 	// loop over given ascii slice
 	// loop over map, char by char, compare the runes of each char to the same part in given
+	// test2 := []string{}
+	a := []string{}
 	for i, value := range asciiMap {
-		for j := 0; j < 8; j++ {
-			if Compare(value, []string{"hello"}) {
-				fmt.Println(string(rune(i)))
-				fmt.Println(value, lines[:len(asciiMap[i])])
+		if Compare(value, test) {
+			fmt.Println(string(rune(i)))
+			for j := 0; j < 8; j++ {
+				a = append(a, (lines[j][len(asciiMap[i][0]):]))
 			}
 		}
 	}
-
+	fmt.Println(a)
+	// a := []string{}
+	// fmt.Println(len(asciiMap[33][0]))
 	// for i := 0; i < 8; i++ {
-	// 	fmt.Print(lines[i][:len(asciiMap[35][0])])
+	// 	a = append(a, lines[i][len(asciiMap[35][0]):]+"\n")
 	// }
-
-	// fmt.Println(lines[0][:len(asciiMap[35][0])])
+	// fmt.Println(a)
+	// // fmt.Println(lines[0][:len(asciiMap[35][0])])
 	// fmt.Println(len(asciiMap[35][0]))
-	// fmt.Println("hello")
+
 	// fmt.Println(strings.Join(asciiMap[35], ""))
 }
 
@@ -99,3 +96,20 @@ func Compare(a, b []string) bool {
 	}
 	return true
 }
+
+// putting the runes of each char from standard into a slice
+// runes := []rune{}
+// for _, line := range asciiMap[33] {
+// 	for _, ch := range line {
+// 		runes = append(runes, ch)
+// 	}
+// }
+
+// runes2 := []rune{}
+
+// // putting given ascii into a slice of runes
+// for _, line := range lines {
+// 	for _, ch := range line {
+// 		runes2 = append(runes2, ch)
+// 	}
+// }
