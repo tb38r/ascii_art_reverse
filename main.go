@@ -49,29 +49,39 @@ func main() {
 		}
 	}
 
-	// for i, value := range asciiMap {
-	// 	fmt.Println(i, value)
+	// test := []string{}
+
+	// for i := 0; i < 8; i++ {
+	// 	test = append(test, (lines[i][:len(asciiMap[35][0])]))
+	// }
+	// fmt.Println(test)
+
+	// for i := 0; i < 8; i++ {
+	// 	fmt.Println(lines[i][:len(asciiMap[35][0])])
 	// }
 
-	// fmt.Println(asciiMap[32])
-	test := []string{}
-	for i := 0; i < 8; i++ {
-		test = append(test, (lines[i][:len(asciiMap[35][0])]))
-	}
-	fmt.Println(test)
-	// loop over given ascii slice
-	// loop over map, char by char, compare the runes of each char to the same part in given
-	// test2 := []string{}
-	a := []string{}
-	for i, value := range asciiMap {
-		if Compare(value, test) {
-			fmt.Println(string(rune(i)))
-			for j := 0; j < 8; j++ {
-				a = append(a, (lines[j][len(asciiMap[i][0]):]))
+	for i := len(lines[0]); i >= 0; i-- {
+		for key, value := range asciiMap {
+			for ln, line := range value {
+				for _, ch := range line {
+					fmt.Println(ln, ch, key)
+				}
 			}
 		}
 	}
-	fmt.Println(a)
+
+	// // loop over given ascii slice
+	// loop over map, char by char, compare the runes of each char to the same part in given
+	// test2 := []string{}
+	// a := []string{}
+
+	// for i, value := range asciiMap {
+	// 	if Compare(value, test) {
+	// 		fmt.Println(string(rune(i)))
+	// 	}
+	// }
+	// fmt.Println(a)
+
 	// a := []string{}
 	// fmt.Println(len(asciiMap[33][0]))
 	// for i := 0; i < 8; i++ {
